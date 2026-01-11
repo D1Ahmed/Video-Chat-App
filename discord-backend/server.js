@@ -10,9 +10,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-console.log("starting serverrr")
-const server =http.createServer(app);
-server.listen(PORT,function(){
-    console.log(`Server is listeing on ${PORT}`);
-});
+
  
+mongoose.connect(process.env.MONGO_URI)
+.then(()=>{
+    console.log("starting serverrr")
+    const server =http .createServer(app);
+    server.listen(PORT,function(){
+        console.log(`Server is listeing on ${PORT}`);
+    });
+})
+.catch(err=> {
+    console.log("database con failed")
+})
