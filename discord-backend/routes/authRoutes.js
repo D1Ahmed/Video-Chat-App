@@ -11,7 +11,7 @@ const registerSchema =Joi.object({
 
 const loginSchema = Joi.object({
     password:Joi.string().min(6).max(12).required(),
-    main: Joi.string().email().required(),
+    mail: Joi.string().email().required(),
 });
 
 router.post("/register",validator.body(registerSchema), authControllers.controllers.postRegister);
